@@ -33,6 +33,14 @@
         <input type="text" name="adjustment" placeholder="Adjustment" required>
         <button>Submit Salary</button>
     </form>
+    <br><br><br>
+    <form action="includes/addAttendance.inc.php" method="post">
+        <input type="text" name="userID" placeholder="User ID" required>
+        <input type="datetime-local" name="clockInTime" placeholder="Clock In Time" required>
+        <input type="datetime-local" name="clockOutTime" placeholder="Clock Out Time" required>
+        <button>Submit Attendance</button>
+    </form>
+
 
 </body>
 </html>
