@@ -40,7 +40,13 @@
         <input type="datetime-local" name="clockOutTime" placeholder="Clock Out Time" required>
         <button>Submit Attendance</button>
     </form>
-
+    <br><br><br>
+    <form action="includes/addUser.inc.php" method="post">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="fullName" placeholder="Full Name" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button>Add User</button>
+    </form>
 
 </body>
 </html>
