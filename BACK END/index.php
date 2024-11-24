@@ -47,6 +47,13 @@
         <input type="password" name="password" placeholder="Password" required>
         <button>Add User</button>
     </form>
+    <br><br><br>
+    <form action="includes/changePassword.inc.php" method="post">
+        <input type="text" name="userID" placeholder="User ID" required>
+        <input type="password" name="currentPassword" placeholder="Current Password" required>
+        <input type="password" name="newPassword" placeholder="New Password" required>
+        <button>Change Password</button>
+    </form>
 
 </body>
 </html>
