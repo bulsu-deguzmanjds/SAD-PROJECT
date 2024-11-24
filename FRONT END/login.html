@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Login</title>
     <style>
         * {
             margin: 0;
@@ -24,6 +23,7 @@
             width: 100%;
         }
 
+        
         .logo {
             flex: 1;
             display: flex;
@@ -37,8 +37,9 @@
             height: auto;
         }
 
+       
         .container {
-            flex: 0.5;
+            flex: .5;
             background-color: #0610D7;
             color: #fff;
             display: flex;
@@ -47,11 +48,12 @@
             align-items: center;
         }
 
-        .LOGIN {
+        .LOGIN{
             margin-bottom: 1.5rem;
             text-align: center;
-            font-size: 8vh;
+            font-size: 12vh;
             font-family: 'Times New Roman', Times, serif;
+            color: white;
         }
 
         form {
@@ -72,23 +74,28 @@
             border: none;
             border-radius: 5px;
             font-size: 1rem;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
             border: 1px solid #ddd;
         }
 
-        .submit-btn {
-            width: 100%;
+        .login-btn {
+            width: 40%;
+       margin-left: 15vh;
             padding: 0.75rem;
             background-color: #df0404;
             border: none;
             color: white;
             font-size: 1rem;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .submit-btn:hover {
-            background-color: #b30000;
+        .login-btn:hover {
+            background-color: #ee9b9517;
         }
 
         .forgot-password {
@@ -107,12 +114,23 @@
             <img src="logo.png" alt="Villa-Fuerte Logo">
         </div>
         <div class="container">
-            <h2 class="LOGIN">Forgot Password</h2>
-            <form action="submit">
-                <label for="username">Email</label>
-                <input type="text" id="username" name="username" placeholder="Enter your email" required>
-                <button type="submit" class="submit-btn">Submit</button>
-                <a href="login.html" class="forgot-password">Back to Login</a>
+            <h2 class="LOGIN">LOGIN</h2>
+            <form action="login">
+                <div class="input-username">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+                <a href="dashboard.html"></a>
+                <a href="forgotpass.html" class="forgot-password">Forgot Password?</a>
+                
+                
             </form>
         </div>
     </div>
