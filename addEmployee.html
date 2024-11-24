@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #aeaeae;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #0004ff;
+            border-right: 1px solid #e9e0e0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;   
+        }
+
+        .sidebar h2 {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            background-color: #539cfc;
+            border: 1px solid #f7f0f0;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+           
+        }
+
+        .sidebar button:hover {
+            background-color: #ddd;
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .form-header .employee-id {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .employee-id span {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-group {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 8px;
+            font-size: 0.9rem;
+            border: 1px solid #000;
+            border-radius: 4px;
+        }
+
+        .save-button {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .save-button button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .save-button button:hover {
+            background-color: #f02727;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>VILLAFUERTE</h1>
+        <h2>DESIGN-BUILDERS</h2>
+        <button>DASHBOARD</button>
+        <button>EMPLOYEE</button>
+        <button>ATTENDANCE</button>
+        <button>TASK</button>
+        <button>PAYROLL</button>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h2>EMPLOYEE ID</h2>
+            <div class="employee-id">
+                
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="contact-number">Contact Number</label>
+                <input type="text" id="contact-number" name="contact-number">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="team">Team</label>
+                <input type="text" id="team" name="team">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="employee-type">Employee Type</label>
+                <input type="text" id="employee-type" name="employee-type">
+            </div>
+            <div class="form-group">
+                <label for="date-hired">Date of Hired</label>
+                <input type="date" id="date-hired" name="date-hired">
+            </div>
+            <div class="form-group">
+                <label for="spouse-name">Spouse/Guardian Name</label>
+                <input type="text" id="spouse-name" name="spouse-name">
+            </div>
+            <div class="form-group">
+                <label for="spouse-contact">Spouse/Guardian Number</label>
+                <input type="text" id="spouse-contact" name="spouse-contact">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+                <label for="advance-amount">Opening Advance Amount</label>
+                <input type="number" id="advance-amount" name="advance-amount">
+            </div>
+            <div class="form-group">
+                <label for="balance-date">Opening Balance as on Date</label>
+                <input type="date" id="balance-date" name="balance-date">
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" id="position" name="position">
+            </div>
+            <div class="form-group">
+                <label for="marital-status">Marital Status</label>
+                <input type="text" id="marital-status" name="marital-status">
+            </div>
+            <div class="form-group">
+                <label for="salary-month">Salary Per Month</label>
+                <input type="number" id="salary-month" name="salary-month">
+            </div>
+            <div class="form-group">
+                <label for="salary-year">Salary Per Year</label>
+                <input type="number" id="salary-year" name="salary-year">
+            </div>
+        </div>
+        <div class="save-button">
+            <button type="submit">SAVE</button>
+        </div>
+    </div>
+</body>
+</html>
