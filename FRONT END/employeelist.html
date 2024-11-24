@@ -1,0 +1,86 @@
+<!DOCTYPE html>   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASKS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: white;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #0004ff;
+            border-right: 1px solid #e9e0e0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h1,
+        .sidebar h2 {
+            color: white;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .sidebar h2 {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+       
+        .sidebar button, 
+        .sidebar select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            background-color:#0056b3 ; 
+            border: 1px solid #f7f0f0;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+        }
+
+       
+        .sidebar button:hover, 
+        .sidebar select:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>VILLAFUERTE</h1>
+        <h2>DESIGN-BUILDERS</h2>
+        <button>DASHBOARD</button>
+        <select id="employee">
+            <option selected disabled>EMPLOYEE</option>
+            <option value="Employee list">Employee list</option>
+            <option value="Cash Advance">Cash Advance</option>
+            <option value="Overtime">Overtime</option>
+            <option value="Deduction">Deduction</option>
+        </select>
+        <button>ATTENDANCE</button>
+        <button>TASK</button>
+        <button>PAYROLL</button>
+        <button>LOGOUT</button>
+    </div>
+</body>
+</html>
