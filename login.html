@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .container1{
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem;
+            height: 100vh; 
+        }
+        .logo{
+            display: flex;
+           justify-content: flex-start;
+           align-items: center;
+           height: 100vh; 
+           margin: 0;
+           padding-left: 40vh;
+           overflow: auto;
+        }
+
+        .container{
+            border: 2px solid black;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            float: right;
+            width: 100vh;
+        }
+
+        .LOGIN{
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .input-username input {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+    <div class="logo">
+
+        <img src="logo.png" alt="Villa-fuerte" width="300" height="300">
+
+    </div>
+    <div class="container">
+            <h2 class="LOGIN"> LOGIN <h2>
+            <form action="login">
+
+                <div class="input-username">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="input-password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+            </form>
+    </div>
+    </div>
+</body>
+</html> 
