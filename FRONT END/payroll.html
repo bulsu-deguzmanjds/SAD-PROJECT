@@ -137,19 +137,27 @@
             <h1>VILLAFUERTE</h1>
             <h2>DESIGN-BUILDERS</h2>
             <a href="dashboardpage.html"><button>DASHBOARD</button></a>
-            <select id="employee">
+            <select id="employee" onchange="navigateToPage()">
                 <option selected disabled>EMPLOYEE</option>
-                <option value="Employee list">Employee list</option>
-                <option value="Cash Advance">Cash Advance</option>
-                <option value="Overtime">Overtime</option>
-                <option value="Deduction">Deduction</option>
+                <option value="employeelist.html">Employee list</option>
+                <option value="cashadvance.html">Cash Advance</option>
+                <option value="overtime.html">Overtime</option>
+                <option value="deduction.html">Deduction</option>
             </select>
-            <a href=""><button>ATTENDANCE</button></a>
+            <a href="attendance.html"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
-            <a href="http://"><button>PAYROLL</button></a>
+            <a href="payroll.html"><button>PAYROLL</button></a>
            <a href="login.html"><button>LOGOUT</button></a> 
         </div>
-
+        <script>
+            function navigateToPage() {
+                const selectedPage = document.getElementById("employee").value;
+        
+                if (selectedPage) {
+                    window.location.href = selectedPage;
+                }
+            }
+        </script>
         <div class="main-content">
             <div class="top-bar">
                 <input type="date" class="date-input" placeholder="MM/DD/YY">
