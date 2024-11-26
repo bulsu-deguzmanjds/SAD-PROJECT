@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../../FRONT END/employeelist.html"); // Redirect to homepage or confirmation page
+        header("Location: ../../FRONT END/employeelist.php"); // Redirect to homepage or confirmation page
         exit();
     } catch (PDOException $e) {
         // Handle errors
