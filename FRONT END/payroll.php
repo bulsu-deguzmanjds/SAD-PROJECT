@@ -146,7 +146,7 @@
             </select>
             <a href="attendance.html"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
-            <a href="payroll.html"><button>PAYROLL</button></a>
+            <a href="payroll.php"><button>PAYROLL</button></a>
            <a href="login.html"><button>LOGOUT</button></a> 
         </div>
         <script>
@@ -160,10 +160,8 @@
         </script>
         <div class="main-content">
             <div class="top-bar">
-                <input type="date" class="date-input" placeholder="MM/DD/YY">
                 <div class="action-buttons">
-                    <button class="payroll-btn">PAYROLL</button>
-                    <button class="payslip-btn">PAYSLIP</button>
+                    <button class="payslip-btn">PRINT PAYSLIP</button>
                 </div>
             </div>
             <table>
@@ -173,35 +171,44 @@
                         <th>EMPLOYEE NAME</th>
                         <th>GROSS</th>
                         <th>DEDUCTION</th>
-                        <th>CASH ADVANCE</th>
                         <th>NET PAY</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>John Doe</td>
-                        <td>2,500</td>
-                        <td>500</td>
-                        <td>200</td>
-                        <td>1,800</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Jane Smith</td>
-                        <td>3,000</td>
-                        <td>700</td>
-                        <td>150</td>
-                        <td>2,150</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Carla Detu</td>
-                        <td>3,000</td>
-                        <td>700</td>
-                        <td>150</td>
-                        <td>2,150</td>
-                    </tr>
+                    <?php
+                    try {
+                        // Include database connection
+                        require_once("../BACK END/includes/db.inc.php");
+
+                        // Query to fetch gross salary data along with deductions and cash advance
+                        $query = "SELECT gs.salaryID, e.firstName, e.lastName, gs.salary AS gross, 
+                                    gs.adjustment AS deduction, 
+                                    (gs.salary - gs.adjustment) AS netPay
+                                FROM grossSalary gs
+                                JOIN employee e ON gs.employeeID = e.employeeID";
+
+                        // Prepare and execute the query
+                        $stmt = $pdo->query($query);
+
+                        // Loop through the results and display each employee's gross salary data
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['salaryID']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['gross']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['deduction']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['netPay']) . "</td>";
+                            echo "</tr>";
+                        }
+
+                        // Clean up
+                        $pdo = null;
+                        $stmt = null;
+
+                    } catch (PDOException $e) {
+                        die("Error fetching gross salary data: " . $e->getMessage());
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
