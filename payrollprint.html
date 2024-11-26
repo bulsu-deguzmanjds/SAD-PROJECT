@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: white;
+        }
+    .sidebar {
+    background-color: #002080;
+    width: 20%;
+    color: white;
+    padding: 1.5rem;
+    border-right: solid red 10px;
+    text-align: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;   
+        }
+
+        .sidebar h2 {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .sidebar button, .sidebar select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+        }
+
+        .sidebar button:hover {
+            background-color: #8e0000;
+        }
+
+    .content {
+        flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+    }
+    
+    h3 {
+        margin-bottom: 10px;
+    }
+    
+    .payroll-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+    
+    .payroll-table th, .payroll-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    .payroll-table th {
+        background-color: #ccc;
+        font-weight: bold;
+    }
+    
+    tfoot td {
+        font-weight: bold;
+        background-color: #f9f9f9;
+    }
+    
+    .signatures {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    
+    .signature {
+        width: 45%;
+        text-align: center;
+    }
+    
+    .signature hr {
+        border: 0;
+        border-top: 2px solid black;
+        margin: 10px 0;
+    }
+    
+    .print-btn {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .print-btn:hover {
+        background-color: #218838;
+    }
+    </style>
+<body>
+    <div class="sidebar">
+        <h1>VILLAFUERTE</h1>
+        <h2>DESIGN-BUILDERS</h2>
+        <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
+        <select id="employee" onchange="navigateToPage()">
+            <option selected disabled>EMPLOYEE</option>
+            <option value="employeelist.html">Employee list</option>
+            <option value="cashadvance.html">Cash Advance</option>
+            <option value="overtime.html">Overtime</option>
+            <option value="deduction.html">Deduction</option>
+        </select>
+        <a href="attendance.html"><button>ATTENDANCE</button></a>
+        <a href="task.html"><button>TASK</button></a>
+        <a href="payroll.html"><button>PAYROLL</button></a>
+        <button>LOGOUT</button>
+    </div>
+    
+    <script>
+        function navigateToPage() {
+            const selectedPage = document.getElementById("employee").value;
+    
+            if (selectedPage) {
+                window.location.href = selectedPage;
+            }
+        }
+    </script>
+        <div class="content">
+            <h3>EMPLOYEE ID:</h3>
+            <h3>EMPLOYEE NAME:</h3>
+
+            <table class="payroll-table">
+                <thead>
+                    <tr>
+                        <th>EARNINGS</th>
+                        <th>AMOUNT</th>
+                        <th>DEDUCTIONS</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sample Earning</td>
+                        <td>₱4.00</td>
+                        <td>Sample Deduction</td>
+                        <td>₱0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Earning</td>
+                        <td>₱4.00</td>
+                        <td>Sample Deduction</td>
+                        <td>₱0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Earning</td>
+                        <td>₱4.00</td>
+                        <td>Sample Deduction</td>
+                        <td>₱0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Earning</td>
+                        <td>₱0.00</td>
+                        <td>Sample Deduction</td>
+                        <td>₱0.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>TOTAL EARNINGS:</td>
+                        <td>₱0.00</td>
+                        <td>TOTAL DEDUCTIONS:</td>
+                        <td>₱0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">NET PAY:</td>
+                        <td>₱0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="signatures">
+                <div class="signature">
+                    <p>EMPLOYER SIGNATURE</p>
+                    <hr>
+                </div>
+                <div class="signature">
+                    <p>EMPLOYEE SIGNATURE</p>
+                    <hr>
+                </div>
+            </div>
+
+            <button class="print-btn">PRINT</button>
+        </div>
+    </div>
+</body>
+</html>

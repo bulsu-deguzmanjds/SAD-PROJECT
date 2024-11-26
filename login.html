@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,59 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        .container1{
-            display: flex;
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 1rem;
-            height: 100vh; 
-        }
-        .logo{
-            display: flex;
-           justify-content: flex-start;
-           align-items: center;
-           height: 100vh; 
-           margin: 0;
-           padding-left: 40vh;
-           overflow: auto;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        .container{
-            border: 2px solid black;
-            justify-content: flex-end;
-            align-items: center;
+        body {
+            display: flex;
             height: 100vh;
-            float: right;
-            width: 100vh;
+            background-color: #222;
+        }
+
+        .container1 {
+            display: flex;
+            width: 100%;
+        }
+
+        
+        .logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        .logo img {
+            max-width: 80%;
+            height: auto;
+        }
+
+       
+        .container {
+            flex: .5;
+            background-color: #0610D7;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .LOGIN{
             margin-bottom: 1.5rem;
             text-align: center;
+            font-size: 12vh;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
         }
-        .input-username input {
-        padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1rem;
-        transition: border-color 0.3s ease;
+
+        form {
+            width: 80%;
+            max-width: 350px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            border: 1px solid #ddd;
+        }
+
+        .login-btn {
+            width: 40%;
+       margin-left: 15vh;
+            padding: 0.75rem;
+            background-color: #df0404;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #ee9b9517;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
     <div class="container1">
-    <div class="logo">
-
-        <img src="logo.png" alt="Villa-fuerte" width="300" height="300">
-
-    </div>
-    <div class="container">
-            <h2 class="LOGIN"> LOGIN <h2>
+        <div class="logo">
+            <img src="logo.png" alt="Villa-Fuerte Logo">
+        </div>
+        <div class="container">
+            <h2 class="LOGIN">LOGIN</h2>
             <form action="login">
-
                 <div class="input-username">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your email" required>
                 </div>
 
                 <div class="input-password">
@@ -65,8 +127,161 @@
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
 
+                <button type="submit" class="login-btn">Login</button>
+                <a href="forgotpass.html" class="forgot-password">Forgot Password?</a>
+              
             </form>
-    </div>
+        </div>
     </div>
 </body>
-</html> 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #222;
+        }
+
+        .container1 {
+            display: flex;
+            width: 100%;
+        }
+
+        .logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        .logo img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .container {
+            flex: 0.5;
+            background-color: #0610D7;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .LOGIN {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 12vh;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+
+        form {
+            width: 80%;
+            max-width: 350px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            border: 1px solid #ddd;
+        }
+
+        .login-btn {
+            width: 40%;
+            margin-left: 15vh;
+            padding: 0.75rem;
+            background-color: #df0404;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #ee9b9517;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="logo">
+            <img src="logo.png" alt="Villa-Fuerte Logo">
+        </div>
+        <div class="container">
+            <h2 class="LOGIN">LOGIN</h2>
+            <form id="loginForm">
+                <div class="input-username">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+                <a href="forgotpass.html" class="forgot-password">Forgot Password?</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === "user@example.com" && password === "password123") {
+                alert("Login successful!");
+                window.location.href = "dashboardpag.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
+
