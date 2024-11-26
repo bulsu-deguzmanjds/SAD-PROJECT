@@ -247,41 +247,25 @@
 <body>
     <div class="container1">
         <div class="logo">
-            <img src="logo.png" alt="Villa-Fuerte Logo">
+            <img src="images/logo.png" alt="Villa-Fuerte Logo">
         </div>
-        <div class="container">
+        <div class="container"> 
             <h2 class="LOGIN">LOGIN</h2>
-            <form id="loginForm">
+            <form action="../BACK END/includes/login.inc.php" method="post">
                 <div class="input-username">
                     <label for="username">Email</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter your email" required>
                 </div>
-
                 <div class="input-password">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
-
-                <button type="submit" class="login-btn">Login</button>
+                <button class="login-btn">Login</button>
+                
                 <a href="forgotpass.html" class="forgot-password">Forgot Password?</a>
             </form>
         </div>
     </div>
-
-    <script>
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username === "user@example.com" && password === "password123") {
-                alert("Login successful!");
-                window.location.href = "dashboardpage.html";
-            } else {
-                alert("Invalid email or password. Please try again.");
-            }
-        });
-    </script>
 </body>
 </html>
 

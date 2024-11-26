@@ -158,39 +158,43 @@
         <div class="form-header">
             <h2>ADD EMPLOYEE</h2>
         </div>
-        <div class="form-content">
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name">
+        <form action="../BACK END/includes/addEmployee.inc.php" method="post">
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="lastName">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="contact-number">Contact Number</label>
+                    <input type="text" id="contact-number" name="contactNumber">
+                </div>
+                <div class="form-group">
+                    <label for="team">Team</label>
+                    <input type="text" id="team" name="team">
+                </div>
+                <div class="form-group">
+                    <label for="employee-type">Employee Type</label>
+                    <input type="text" id="employee-type" name="employeeType">
+                </div>
+                <div class="form-group">
+                    <label for="date-hired">Date Hired</label>
+                    <input type="date" id="date-hired" name="dateHired">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name">
+            <div class="save-button">
+                <button type="submit">SAVE</button>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="contact-number">Contact Number</label>
-                <input type="text" id="contact-number" name="contact-number">
-            </div>
-            <div class="form-group">
-                <label for="team">Team</label>
-                <input type="text" id="team" name="team">
-            </div>
-            <div class="form-group">
-                <label for="employee-type">Employee Type</label>
-                <input type="text" id="employee-type" name="employee-type">
-            </div>
-            <div class="form-group">
-                <label for="date-hired">Date Hired</label>
-                <input type="date" id="date-hired" name="date-hired">
-            </div>
-        </div>
-        <div class="save-button">
-            <a href="employeelist.html"><button type="submit">SAVE</button></a>
-        </div>
+        </form>
+
+       
     </div>
 </body>
 </html>

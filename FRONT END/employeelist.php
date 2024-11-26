@@ -140,7 +140,7 @@
         }
     </script>
     
-     <div class="main-content">
+    <div class="main-content">
         <div class="top-bar">
             <a href="addemployee.html"><button class="add-btn"> + ADD</button></a>
         </div>
@@ -148,34 +148,48 @@
             <thead>
                 <tr>
                     <th>NAME</th>
-                    <th>POSITIONN</th>
+                    <th>POSITION</th>
                     <th>TEAM</th>
-                    <th>ATTENDANCE</th>
-                    <th>TAXES/DEDUCTION</th>
-                    <th>GROSSPAY</th>
+                    <th>CONTACT NUMBER</th>
+                    <th>EMAIL</th>
+                    <th>DATE HIRED</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>08-09-24</td>
-                    <td>003</td>
-                    <td>Denmark DeGuzman</td>
-                    <td>Manager</td>
-                    <td>200</td>
-                    <td>200</td>
-        
-                </tr>
-                <tr>
-                    <td>08-09-24</td>
-                    <td>003</td>
-                    <td>Denmark DeGuzman</td>
-                    <td>Manager</td>
-                    <td>200</td>
-                    <td>200</td>
-                </tr>
+                <?php
+                try {
+                    // Include database connection
+                    require_once("../BACK END/includes/db.inc.php");
+    
+                    // SQL query to fetch employee data
+                    $query = "SELECT firstName, lastName, employeeType AS position, team, contactNumber, email, dateHired FROM employee";
+    
+                    // Prepare and execute the query
+                    $stmt = $pdo->query($query);
+    
+                    // Loop through the results and display each employee
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['position']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['team']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['contactNumber']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['dateHired']) . "</td>";
+                        echo "</tr>";
+                    }
+    
+                    // Clean up
+                    $pdo = null;
+                    $stmt = null;
+    
+                } catch (PDOException $e) {
+                    die("Error fetching employee data: " . $e->getMessage());
+                }
+                ?>
             </tbody>
         </table>
     </div>
-    </div>
+    
 </body>
 </html>

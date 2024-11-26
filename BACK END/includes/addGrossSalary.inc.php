@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $userID = $_POST["userID"];
+    $employeeID = $_POST["employeeID"];
     $daysPresent = $_POST["daysPresent"];
     $rate = $_POST["rate"];
     $overtimeHours = $_POST["overtimeHours"];
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare the INSERT query
         $query = "
             INSERT INTO grossSalary (
-                userID, 
+                employeeID, 
                 daysPresent, 
                 rate, 
                 overtimeHours, 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Prepare and execute the statement
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$userID, $daysPresent, $rate, $overtimeHours, $overtimePay, $salary, $adjustment]);
+        $stmt->execute([$employeeID, $daysPresent, $rate, $overtimeHours, $overtimePay, $salary, $adjustment]);
 
         // Close the connection
         $pdo = null;
