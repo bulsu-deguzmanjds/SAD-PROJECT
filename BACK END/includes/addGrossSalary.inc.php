@@ -6,9 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $daysPresent = $_POST["daysPresent"];
     $rate = $_POST["rate"];
     $overtimeHours = $_POST["overtimeHours"];
-    $overtimePay = $_POST["overtimePay"];
-    $salary = $_POST["salary"];
-    $adjustment = $_POST["adjustment"];
+    $overtimePay = $overtimeHours * $rate / 8; 
+    $grossSalary = ($daysPresent * $rate) + $overtimePay;
 
     try {
         // Include the database connection
@@ -22,15 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 rate, 
                 overtimeHours, 
                 overtimePay, 
-                salary, 
-                adjustment
-            ) 
-            VALUES (?, ?, ?, ?, ?, ?, ?);
+                salary            
+                ) 
+            VALUES (?, ?, ?, ?, ?, ?);
         ";
 
         // Prepare and execute the statement
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$employeeID, $daysPresent, $rate, $overtimeHours, $overtimePay, $salary, $adjustment]);
+        $stmt->execute([$employeeID, $daysPresent, $rate, $overtimeHours, $overtimePay, $salary]);
 
         // Close the connection
         $pdo = null;

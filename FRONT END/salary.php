@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overtime</title>
+    <title>Salary</title>
     <style>
         * {
             margin: 0;
@@ -160,8 +160,7 @@
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
             <option value="employeelist.php">Employee list</option>
-            <option value="cashadvance.html">Cash Advance</option>
-            <option value="overtime.html">Overtime</option>
+            <option value="salary.php">Salary</option>
             <option value="deduction.php">Deduction</option>
         </select>
         <a href="attendance.html"><button>ATTENDANCE</button></a>
@@ -180,31 +179,65 @@
         }
     </script>
     <div class="main-content">
-        <div class="search-container">
-            <button class="add-btn">+ ADD</button>
-            <input type="text" id="search" placeholder="Search...">
+        <div class="top-bar">
+            <h1>Salary Information</h1>
         </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>DATE</th>
-                        <th>EMPLOYEE ID</th>
-                        <th>TOOLS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Sample Date</td>
-                        <td>12345</td>
-                        <td class="tools">
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>SALARY ID</th>
+                    <th>EMPLOYEE NAME</th>
+                    <th>DAYS PRESENT</th>
+                    <th>RATE</th>
+                    <th>OVERTIME HOURS</th>
+                    <th>OVERTIME PAY</th>
+                    <th>GROSS SALARY</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                try {
+                    // Include database connection
+                    require_once("../BACK END/includes/db.inc.php");
+    
+                    // Query to fetch salary data along with employee names
+                    $query = "SELECT gs.salaryID, e.firstName, e.lastName, gs.daysPresent, 
+                                 gs.rate, gs.overtimeHours, gs.overtimePay, 
+                                 gs.salary
+                              FROM grossSalary gs
+                              JOIN employee e ON gs.employeeID = e.employeeID";
+    
+                    // Prepare and execute the query
+                    $stmt = $pdo->query($query);
+    
+                    // Loop through the results and display each salary entry
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['salaryID']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['daysPresent']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['rate']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['overtimeHours']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['overtimePay']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['salary']) . "</td>";
+                        echo "<td class='tools'>
+                                <button class='edit'>Edit</button>
+                                <button class='delete'>Delete</button>
+                              </td>";
+                        echo "</tr>";
+                    }
+    
+                    // Clean up
+                    $pdo = null;
+                    $stmt = null;
+    
+                } catch (PDOException $e) {
+                    die("Error fetching salary data: " . $e->getMessage());
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>    
 </body>
 </html>
