@@ -169,7 +169,7 @@
                 <option value="salary.php">Salary</option>
                 <option value="deduction.php">Deduction</option>
             </select>
-            <a href="attendance.html"><button>ATTENDANCE</button></a>
+            <a href="attendance.php"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
             <a href="payroll.php"><button>PAYROLL</button></a>
             <button>LOGOUT</button>
@@ -208,8 +208,7 @@
     
                     // Query to fetch deduction data along with employee names
                     $query = "SELECT d.deductionID, e.firstName, e.lastName, d.cashAdvance, 
-                                 d.kaltas, d.adjustment, d.gadget, 
-                                 (d.cashAdvance + d.kaltas + d.adjustment + d.gadget) AS totalDeduction
+                                 d.kaltas, d.adjustment, d.gadget, d.totalDeduction
                               FROM deductions d
                               JOIN employee e ON d.employeeID = e.employeeID";
     

@@ -144,7 +144,7 @@
                 <option value="salary.php">Salary</option>
                 <option value="deduction.php">Deduction</option>
             </select>
-            <a href="attendance.html"><button>ATTENDANCE</button></a>
+            <a href="attendance.php"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
             <a href="payroll.php"><button>PAYROLL</button></a>
            <a href="login.html"><button>LOGOUT</button></a> 
@@ -181,11 +181,15 @@
                         require_once("../BACK END/includes/db.inc.php");
 
                         // Query to fetch gross salary data along with deductions and cash advance
-                        $query = "SELECT gs.salaryID, e.firstName, e.lastName, gs.salary AS gross, 
-                                    gs.adjustment AS deduction, 
-                                    (gs.salary - gs.adjustment) AS netPay
-                                FROM grossSalary gs
-                                JOIN employee e ON gs.employeeID = e.employeeID";
+                        $query = "SELECT    gs.salaryID, 
+                                            e.firstName, 
+                                            e.lastName, 
+                                            gs.salary AS gross, 
+                                            d.totalDeduction AS deduction, 
+                                            (gs.salary - d.totalDeduction) AS netPay
+                                    FROM grossSalary gs
+                                    JOIN employee e ON gs.employeeID = e.employeeID
+                                    JOIN deductions d ON d.employeeID = e.employeeID";
 
                         // Prepare and execute the query
                         $stmt = $pdo->query($query);
