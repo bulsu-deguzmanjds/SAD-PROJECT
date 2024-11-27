@@ -167,7 +167,7 @@
                 <option value="employeelist.php">Employee list</option>
                 <option value="cashadvance.html">Cash Advance</option>
                 <option value="overtime.html">Overtime</option>
-                <option value="deduction.html">Deduction</option>
+                <option value="deduction.php">Deduction</option>
             </select>
             <a href="attendance.html"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
@@ -185,49 +185,61 @@
             }
         </script>
     <div class="main-content">
-        <div class="header">
-            <button class="add-btn">ADD</button>
-            <div class="search-box">
-                <label for="search">SEARCH:</label>
-                <input type="text" id="search" placeholder="Search...">
-            </div>
+        <div class="top-bar">
+            <h1>Deductions Information</h1>
         </div>
-
         <table>
             <thead>
                 <tr>
-                    <th>DESCRIPTION</th>
-                    <th>AMOUNT</th>
-                    <th>TOOLS</th>
+                    <th>DEDUCTION ID</th>
+                    <th>EMPLOYEE NAME</th>
+                    <th>CASH ADVANCE</th>
+                    <th>KALTAS</th>
+                    <th>ADJUSTMENT</th>
+                    <th>GADGET</th>
+                    <th>TOTAL DEDUCTION</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>PAG IBIG</td>
-                    <td>150.00</td>
-                    <td class="tools">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PHILHEALTH</td>
-                    <td>150.00</td>
-                    <td class="tools">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>SSS</td>
-                    <td>100.00</td>
-                    <td class="tools">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
+                <?php
+                try {
+                    // Include database connection
+                    require_once("../BACK END/includes/db.inc.php");
+    
+                    // Query to fetch deduction data along with employee names
+                    $query = "SELECT d.deductionID, e.firstName, e.lastName, d.cashAdvance, 
+                                 d.kaltas, d.adjustment, d.gadget, 
+                                 (d.cashAdvance + d.kaltas + d.adjustment + d.gadget) AS totalDeduction
+                              FROM deductions d
+                              JOIN employee e ON d.employeeID = e.employeeID";
+    
+                    // Prepare and execute the query
+                    $stmt = $pdo->query($query);
+    
+                    // Loop through the results and display each deduction entry
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['deductionID']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['cashAdvance']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['kaltas']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['adjustment']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['gadget']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['totalDeduction']) . "</td>";
+                        echo "</tr>";
+                    }
+    
+                    // Clean up
+                    $pdo = null;
+                    $stmt = null;
+    
+                } catch (PDOException $e) {
+                    die("Error fetching deductions data: " . $e->getMessage());
+                }
+                ?>
             </tbody>
         </table>
     </div>
+    
 </body>
 </html>
