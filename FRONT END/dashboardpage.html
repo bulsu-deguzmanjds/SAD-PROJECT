@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -88,86 +88,28 @@
             gap: 1rem;
         }
 
-        
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-
-        .projects {
-            text-align: center;
-        }
-
-        .projects .progress-circle {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            background: conic-gradient(#0040ff 75%, #ddd 75%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0040ff;
-            font-size: 1.5rem;
-        }
-
-        Calendar
-        .calendar {
-            flex: 1.5;
-            background-color: white;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-header h2 {
-            font-size: 1.25rem;
-        }
-
-        .calendar-days {
+        .card.btn{
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+        .employee-card{
+            background-color: white;
+            padding: 20px;
             text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .calendar-days div {
-            padding: 0.5rem;
-            border-radius: 4px;
+        .attendance-card{
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .calendar-days .red {
-            color: red;
-        }
-
-        .events {
-            margin-top: 1rem;
-        }
-
-        .event {
-            background-color: #eee;
-            padding: 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .event .time {
-            font-size: 0.9rem;
-            color: #666;
-        }
+        
     </style>
 </head>
 <body>
@@ -202,29 +144,194 @@
         <div class="main-content">          
             <div class="header">Welcome, Eren</div>
 
-            <div class="content">
-                <div class="card">
-                    <div class="projects">
-                        <h3>Projects</h3>
-                        <div class="progress-circle">85</div>
-                        <p><span style="color: #0040ff;">● Completed</span> <span style="color: #aaa;">● In Progress</span></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Check Stubs</h3>
-                    <p>Pay period</p>
-                    <ul>
-                        <li>Nov 30</li>
-                        <li>Oct 30</li>
-                        <li>Dec 30</li>
-                    </ul>
-                    <h2>P 1,000</h2>
-                    <p><a href="" style="color: #0040ff; text-decoration: underline;">View details</a></p>
+            <div class="card-btn">
                 
-                    </div>
-                </div>
+                <div class="employee-card">EMPLOYEE</div>
+                <div class="attendance-card">attendance</div>
+                <div class="tasks-card">tasks</div>
+                <div class="payroll-card">payroll</div>
             </div>
+           
         </div>
     </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villafuerte Design-Builders</title>
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+
+}
+
+.sidebar {
+    background-color: #002080;
+    width: 20%;
+    color: white;
+    padding: 1.5rem;
+    border-right: solid red 10px;
+    text-align: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+.sidebar button, .sidebar select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+        }
+.sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;   
+        }
+        .sidebar button:hover {
+            background-color: #8e0000;
+        }
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.welcome {
+    background-color: #0018f9;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 80px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.employees {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.employee-btn {
+    background-color: #f1f1f1;
+    border: 2px solid #0018f9;
+    border-radius: 40px;
+    padding: 30px 80px;
+    font-size: 16px;
+    color: #0018f9;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.3); 
+}
+
+.employee-btn:hover {
+    background-color: #0018f9;
+    color: white;
+}
+
+
+.widgets {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.clock {
+    background-color: #0018f9;
+    color: white;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.time {
+    font-size: 48px;
+    font-weight: bold;
+    background: black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-top-width: 20px ;
+    border-bottom-width: 20px ;
+    border-left-width: 148px;
+    border-right-width: 148px;
+}
+
+.calendar {
+    width: 45%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+<body>
+    <div class="sidebar">
+        <h1>VILLAFUERTE</h1>
+        <h2>DESIGN-BUILDERS</h2>
+        <button>DASHBOARD</button>
+        <select id="employee" onchange="navigateToPage()">
+            <option selected disabled>EMPLOYEE</option>
+            <option value="employeelist.html">Employee list</option>
+            <option value="cashadvance.html">Cash Advance</option>
+            <option value="overtime.html">Overtime</option>
+            <option value="deduction.html">Deduction</option>
+        </select>
+        <a href="attendance.html"><button>ATTENDANCE</button></a>
+        <a href="task.html"><button>TASK</button></a>
+        <a href="payroll.html"><button>PAYROLL</button></a>
+        <button>LOGOUT</button>
+    </div>
+    
+    <script>
+        function navigateToPage() {
+            const selectedPage = document.getElementById("employee").value;
+    
+            if (selectedPage) {
+                window.location.href = selectedPage;
+            }
+        }
+    </script>
+    
+    <div class="main-content">
+        <div class="welcome">Welcome, Eren</div>
+
+        <div class="employees">
+            <button class="employee-btn">EMPLOYEE</button>
+            <button class="employee-btn">ATTENDANCE</button>
+            <button class="employee-btn">TASK</button>
+            <button class="employee-btn">PAYROLL</button>
+        </div>
+
+        <div class="widgets">
+            <div class="clock">
+                <div class="time">10:00 AM</div>
+            </div>
+            <div class="calendar">
+                <iframe src="https://calendar.google.com/calendar/embed?wkst=1" style="border: 0" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
 </body>
 </html>
