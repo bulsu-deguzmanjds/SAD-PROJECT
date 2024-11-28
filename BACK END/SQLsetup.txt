@@ -44,3 +44,4 @@ CREATE TABLE employee (
     employeeType VARCHAR(50),                  
     dateHired DATE NOT NULL                    
 );  
+
