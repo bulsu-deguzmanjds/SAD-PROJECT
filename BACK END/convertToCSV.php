@@ -29,8 +29,7 @@ function convertExcelToCSV($inputFile, $outputFile) {
     echo "Excel file has been converted to CSV successfully!";
 }
 
-// Define the input Excel file and output CSV file paths
-$inputFile = '../new-payroll-sysmtem-2024.xlsx'; // Replace with the path to your Excel file
+$inputFile = '../new-payroll-sysmtem-2024.xlsx';
 $outputFile = 'attendanceLog.csv'; 
 
 convertExcelToCSV($inputFile, $outputFile);
