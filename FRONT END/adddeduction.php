@@ -159,53 +159,6 @@
             <h2>ADD DEDUCTION</h2>
         </div>
         <!-- HTML Form with Dropdown -->
-<form action="" method="post">
-    <label for="employee">Select Employee:</label>
-    <select name="employeeID" id="employee">
-        <option value="" disabled selected>-- Select an Employee --</option>
-        <?php foreach ($employees as $employee): ?>
-            <option value="<?= htmlspecialchars($employee['employeeID']) ?>">
-                <?= htmlspecialchars($employee['firstName'] . ' ' . $employee['lastName']) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</form>
-<BR></BR>
-        <form action="deduction.php" method="post">
-            <div class="form-content">
-                <div class="form-group">
-                    <label for="cash advance">Cash Advance</label>
-                    <input type="advance">
-                </div>
-                <div class="form-group">
-                    <label for="last-name">Kaltas</label>
-                    <input type="kaltas" >
-                </div>
-                <div class="form-group">
-                    <label for="email">Adjustment</label>
-                    <input type="adjustment" >
-                </div>
-                <div class="form-group">
-                    <label for="contact-number">Gadget</label>
-                    <input type="number" >
-                </div>
-                <!-- <div class="form-group">
-                    <label for="team">Team</label>
-                    <input type="text" id="team" name="team">
-                </div>
-                <div class="form-group">
-                    <label for="employee-type">Employee Type</label>
-                    <input type="text" id="employee-type" name="employeeType">
-                </div>
-                <div class="form-group">
-                    <label for="date-hired">Date Hired</label>
-                    <input type="date" id="date-hired" name="dateHired">
-                </div> -->
-            </div>
-            <div class="save-button">
-                <button type="submit">SAVE</button>
-            </div>
-        </form>
         <?php
 try {
     require_once("../BACK END/includes/db.inc.php");
@@ -232,6 +185,34 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
+<form action="" method="post">
+    <label for="employee">Select Employee:</label>
+    <select name="employeeID" id="employee">
+        <option value="" disabled selected>-- Select an Employee --</option>
+        <?php foreach ($employees as $employee): ?>
+            <option value="<?= htmlspecialchars($employee['employeeID']) ?>">
+                <?= htmlspecialchars($employee['firstName'] . ' ' . $employee['lastName']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</form>
+<BR></BR>
+        <form action="deduction.php" method="post">
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="cashAdvance">Cash Advance</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="adjustment">Adjustment</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="save-button">
+                <button type="submit">SAVE</button>
+            </div>
+        </form>
+
 
        
     </div>

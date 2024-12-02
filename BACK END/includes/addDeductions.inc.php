@@ -4,19 +4,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $employeeID = $_POST["employeeID"];
     $advance = $_POST["advance"];
-    $kaltas = $_POST["kaltas"];
     $adjustment = $_POST["adjustment"];
-    $gadget = $_POST["gadget"];
-    $totalDeduction = $advance + $adjustment + $kaltas + $gadget;
+    $totalDeduction = $advance + $adjustment;
 
     try{
         require_once("db.inc.php");
 
-        $query = "INSERT INTO deductions (employeeID, cashAdvance, kaltas, adjustment, gadget, totalDeduction) VALUES (?, ?, ?, ?, ?, ?);";  
+        $query = "INSERT INTO deductions (employeeID, cashAdvance, adjustment, totalDeduction) VALUES (?, ?, ?, ?);";  
 
         $stmt = $pdo->prepare($query);
 
-        $stmt->execute([$employeeID, $advance, $kaltas, $adjustment, $gadget, $totalDeduction]);
+        $stmt->execute([$employeeID, $advance, $adjustment, $totalDeduction]);
 
         $pdo = null;
         $stmt = null;

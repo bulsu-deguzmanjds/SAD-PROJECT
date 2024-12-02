@@ -1,3 +1,14 @@
+CREATE TABLE employee (
+    employeeID INT AUTO_INCREMENT PRIMARY KEY, 
+    firstName VARCHAR(50) NOT NULL,            
+    lastName VARCHAR(50) NOT NULL,             
+    email VARCHAR(100) NOT NULL UNIQUE,        
+    contactNumber VARCHAR(15),                 
+    team VARCHAR(50),                          
+    employeeType VARCHAR(50),                  
+    dateHired DATE NOT NULL                    
+);  
+
 CREATE TABLE grossSalary (
     salaryID INT AUTO_INCREMENT PRIMARY KEY,          -- Unique identifier for each salary record
     employeeID INT NOT NULL,                          -- Foreign key referencing the employee table
@@ -11,12 +22,10 @@ CREATE TABLE grossSalary (
 
 CREATE TABLE deductions (
     deductionID INT AUTO_INCREMENT PRIMARY KEY,     -- Unique identifier for each deduction
-    employeeIDID INT NOT NULL,                            -- Foreign key referencing the users or employee table
+    employeeID INT NOT NULL,                            -- Foreign key referencing the users or employee table
     cashAdvance DECIMAL(10, 2) DEFAULT 0.00,        -- Cash advance amount
-    kaltas DECIMAL(10, 2) DEFAULT 0.00,             -- Kaltas amount
     adjustment DECIMAL(10, 2) DEFAULT 0.00,         -- Adjustment amount
-    gadget DECIMAL(10, 2) DEFAULT 0.00,             -- Gadget amount
-    FOREIGN KEY (employeeID) REFERENCES employee(employee) -- Foreign key reference
+    FOREIGN KEY (employeeID) REFERENCES employee(employeeID) -- Foreign key reference
 );
 
 CREATE TABLE Attendance (
@@ -24,7 +33,7 @@ CREATE TABLE Attendance (
     EmployeeID INT NOT NULL,                            -- Foreign key referencing Users table
     ClockInTime DATETIME NOT NULL,                  -- Clock-in time (required)
     ClockOutTime DATETIME,                          -- Clock-out time (optional)
-    FOREIGN KEY (EmployeeIDID) REFERENCES employee(EmployeeID)
+    FOREIGN KEY (EmployeeID) REFERENCES employee(EmployeeID)
 );
 
 CREATE TABLE users (
@@ -34,14 +43,5 @@ CREATE TABLE users (
     Pass VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE employee (
-    employeeID INT AUTO_INCREMENT PRIMARY KEY, 
-    firstName VARCHAR(50) NOT NULL,            
-    lastName VARCHAR(50) NOT NULL,             
-    email VARCHAR(100) NOT NULL UNIQUE,        
-    contactNumber VARCHAR(15),                 
-    team VARCHAR(50),                          
-    employeeType VARCHAR(50),                  
-    dateHired DATE NOT NULL                    
-);  
+
 

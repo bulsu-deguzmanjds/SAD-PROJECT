@@ -17,9 +17,7 @@
     <form action="includes/addDeductions.inc.php" method="post"> 
         <input type="text" name="employeeID" placeholder="Employee ID"> 
         <input type="text" name="advance" placeholder="Cash Advance"> 
-        <input type="text" name="kaltas" placeholder="Kaltas"> 
         <input type="text" name="adjustment" placeholder="Adjustment"> 
-        <input type="text" name="gadget" placeholder="Gadget"> 
         <button>Add Deduction</button>
     </form>
     <br><br><br>

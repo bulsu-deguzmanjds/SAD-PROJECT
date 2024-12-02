@@ -9,10 +9,8 @@ try {
             deductions.deductionID, 
             users.fullName AS userFullName, 
             deductions.cashAdvance, 
-            deductions.kaltas, 
             deductions.adjustment, 
-            deductions.gadget,
-            (deductions.cashAdvance + deductions.kaltas + deductions.adjustment + deductions.gadget) AS totalDeductions
+            deductions.totalDeductions
         FROM deductions
         INNER JOIN users ON deductions.userID = users.userID";
     $stmt = $pdo->prepare($query);
@@ -62,9 +60,7 @@ try {
                 <th>ID</th>
                 <th>Full Name</th>
                 <th>Cash Advance</th>
-                <th>Kaltas</th>
                 <th>Adjustment</th>
-                <th>Gadget</th>
                 <th>Total Deductions</th>
             </tr>
         </thead>
@@ -75,9 +71,7 @@ try {
                         <td><?= htmlspecialchars($row['deductionID']) ?></td>
                         <td><?= htmlspecialchars($row['userFullName']) ?></td>
                         <td><?= htmlspecialchars($row['cashAdvance']) ?></td>
-                        <td><?= htmlspecialchars($row['kaltas']) ?></td>
                         <td><?= htmlspecialchars($row['adjustment']) ?></td>
-                        <td><?= htmlspecialchars($row['gadget']) ?></td>
                         <td><?= htmlspecialchars($row['totalDeductions']) ?></td>
                     </tr>
                 <?php endforeach; ?>

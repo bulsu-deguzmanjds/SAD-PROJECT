@@ -165,7 +165,6 @@
             <select id="employee" onchange="navigateToPage()">
                 <option selected disabled>EMPLOYEE</option>
                 <option value="employeelist.php">Employee list</option>
-                
                 <option value="salary.php">Salary</option>
                 <option value="deduction.php">Deduction</option>
             </select>
@@ -195,9 +194,7 @@
                     <th>DEDUCTION ID</th>
                     <th>EMPLOYEE NAME</th>
                     <th>CASH ADVANCE</th>
-                    <th>KALTAS</th>
                     <th>ADJUSTMENT</th>
-                    <th>GADGET</th>
                     <th>TOTAL DEDUCTION</th>
                 </tr>
             </thead>
@@ -209,7 +206,7 @@
     
                     // Query to fetch deduction data along with employee names
                     $query = "SELECT d.deductionID, e.firstName, e.lastName, d.cashAdvance, 
-                                 d.kaltas, d.adjustment, d.gadget, d.totalDeduction
+                                 d.adjustment, d.totalDeduction
                               FROM deductions d
                               JOIN employee e ON d.employeeID = e.employeeID";
     
@@ -222,9 +219,7 @@
                         echo "<td>" . htmlspecialchars($row['deductionID']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['cashAdvance']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['kaltas']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['adjustment']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['gadget']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['totalDeduction']) . "</td>";
                         echo "</tr>";
                     }
