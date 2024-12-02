@@ -11,10 +11,10 @@
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
         <h2>DESIGN-BUILDERS</h2>
-        <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
+        <a href="dashboardPage.html"><button class="add-btn"> DASHBOARD</button></a>
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
-            <option value="employeelist.php">Employee list</option>
+            <option value="employeeList.php">Employee list</option>
             
             <option value="salary.php">Salary</option>
             <option value="deduction.php">Deduction</option>
@@ -39,7 +39,7 @@
         <div class="welcome">Welcome, Eren</div>
 
         <div class="employees">
-            <a href="employeelist.php"><button class="employee-btn">EMPLOYEE</button></a>
+            <a href="employeeList.php"><button class="employee-btn">EMPLOYEE</button></a>
             <a href="attendance.php"><button class="employee-btn">ATTENDANCE</button></a>
             <a href="task.html"><button class="employee-btn">TASK</button></a>
             <a href="payroll.php"><button class="employee-btn">PAYROLL</button></a>
@@ -47,7 +47,28 @@
 
         <div class="widgets">
             <div class="clock">
-                <div class="time">10:00 AM</div>
+                <div class="time">time</div>
+                <script>
+                    function updateTime() {
+                        const now = new Date();
+                        const hours = now.getHours();
+                        const minutes = now.getMinutes();
+                        const seconds = now.getSeconds();
+            
+                        // Format hours to 12-hour format and determine AM/PM
+                        const ampm = hours >= 12 ? 'PM' : 'AM';
+                        const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
+                        const formattedMinutes = minutes.toString().padStart(2, '0');
+            
+                        // Update the time display
+                        const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
+                        document.querySelector('.time').innerText = formattedTime;
+                    }
+            
+                    // Update the time every second
+                    setInterval(updateTime, 1000);
+                    updateTime(); // Call immediately to set the time without waiting
+                </script>
             </div>
             <div class="calendar">
                 <iframe src="https://calendar.google.com/calendar/embed?wkst=1" style="border: 0" width="300" height="250" frameborder="0" scrolling="no"></iframe>

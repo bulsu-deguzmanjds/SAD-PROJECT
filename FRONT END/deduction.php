@@ -161,10 +161,10 @@
         <div class="sidebar">
             <h1>VILLAFUERTE</h1>
             <h2>DESIGN-BUILDERS</h2>
-            <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
+            <a href="dashboardPage.html"><button class="add-btn"> DASHBOARD</button></a>
             <select id="employee" onchange="navigateToPage()">
                 <option selected disabled>EMPLOYEE</option>
-                <option value="employeelist.php">Employee list</option>
+                <option value="employeeList.php">Employee list</option>
                 <option value="salary.php">Salary</option>
                 <option value="deduction.php">Deduction</option>
             </select>
@@ -186,7 +186,7 @@
     <div class="main-content">
         <div class="top-bar">
             <h1>Deductions Information</h1>
-            <a href="adddeduction.php"><button class="add-btn"> + ADD</button></a>
+            <a href="addDeduction.php"><button class="add-btn"> + ADD</button></a>
         </div>
         <table>
             <thead>

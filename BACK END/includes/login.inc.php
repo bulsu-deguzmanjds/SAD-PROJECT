@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["userName"] = $user["FullName"];
             
             // Redirect to the user's dashboard or homepage
-            header("Location: ../../FRONT END/dashboardpage.html");
+            header("Location: ../../FRONT END/dashboardPage.html");
             die("");
         } else {
             // Invalid email or password

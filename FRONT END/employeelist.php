@@ -10,10 +10,10 @@
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
         <h2>DESIGN-BUILDERS</h2>
-        <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
+        <a href="dashboardPage.html"><button class="add-btn"> DASHBOARD</button></a>
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
-            <option value="employeelist.php">Employee list</option>
+            <option value="employeeList.php">Employee list</option>
             
             <option value="salary.php">Salary</option>
             <option value="deduction.php">Deduction</option>

@@ -131,10 +131,10 @@
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
         <h2>DESIGN-BUILDERS</h2>
-        <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
+        <a href="dashboardPage.html"><button class="add-btn"> DASHBOARD</button></a>
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
-            <option value="employeelist.php">Employee list</option>
+            <option value="employeeList.php">Employee list</option>
             <option value="salary.php">Salary</option>
             <option value="deduction.php">Deduction</option>
         </select>
@@ -197,7 +197,7 @@ try {
     </select>
 </form>
 <BR></BR>
-        <form action="deduction.php" method="post">
+        <form action="../BACK END/includes/addDeductions.inc.php" method="post">
             <div class="form-content">
                 <div class="form-group">
                     <label for="cashAdvance">Cash Advance</label>
@@ -206,15 +206,12 @@ try {
                 <div class="form-group">
                     <label for="adjustment">Adjustment</label>
                     <input type="text">
-                </div>
+                </div>  
             </div>
             <div class="save-button">
                 <button type="submit">SAVE</button>
             </div>
         </form>
-
-
-       
     </div>
 </body>
 </html>

@@ -136,10 +136,10 @@
         <div class="sidebar">
             <h1>VILLAFUERTE</h1>
             <h2>DESIGN-BUILDERS</h2>
-            <a href="dashboardpage.html"><button>DASHBOARD</button></a>
+            <a href="dashboardPage.html"><button>DASHBOARD</button></a>
             <select id="employee" onchange="navigateToPage()">
                 <option selected disabled>EMPLOYEE</option>
-                <option value="employeelist.php">Employee list</option>
+                <option value="employeeList.php">Employee list</option>
                 
                 <option value="salary.php">Salary</option>
                 <option value="deduction.php">Deduction</option>
@@ -161,7 +161,7 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="action-buttons">
-                    <button class="payslip-btn">PRINT PAYSLIP</button>
+                    <a href="payrollPrint.html"><button class="payslip-btn">PRINT PAYSLIP</button></a>
                 </div>
             </div>
             <table>
