@@ -187,6 +187,7 @@
     <div class="main-content">
         <div class="top-bar">
             <h1>Deductions Information</h1>
+            <a href="adddeduction.php"><button class="add-btn"> + ADD</button></a>
         </div>
         <table>
             <thead>
