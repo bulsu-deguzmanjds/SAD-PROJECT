@@ -5,10 +5,36 @@
     font-family: Arial, sans-serif;
 }
 
+.index_border{
+    border-top: 2px solid black;
+    padding-top: 150px;
+    border-bottom: 2px solid black;
+    padding-bottom: 150px;
+    border-left: 2px solid black;
+    padding-left: 500px;
+    border-right: 2px solid black;
+    padding-right: 500px;
+    border: solid blue;
+  
+
+}
+
+.B_start{
+display: block;
+margin: auto;
+background-color: red;
+color: white;
+border-radius: 20px;
+width: 100px;
+height: 30px;
+}
+
 body {
     display: flex;
-    height: 100vh;
-    background-color: #222;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: auto;
 }
 
 .container1 {
