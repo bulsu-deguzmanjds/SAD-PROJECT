@@ -17,14 +17,14 @@
             background-color: #333333;
         }
         .sidebar {
-    background-color: #002080;
-    width: 20%;
-    color: white;
-    padding: 1.5rem;
-    border-right: solid red 10px;
-    text-align: center;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-}
+            background-color: #002080;
+            width: 20%;
+            color: white;
+            padding: 1.5rem;
+            border-right: solid red 10px;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
 
         .sidebar h1 {
             font-size: 1.5rem;

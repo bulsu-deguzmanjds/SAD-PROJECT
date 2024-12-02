@@ -103,7 +103,7 @@
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
         <h2>DESIGN-BUILDERS</h2>
-        <button>DASHBOARD</button>
+        <a href="dashboardpage.html"><button class="add-btn"> DASHBOARD</button></a>
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
             <option value="employeelist.php">Employee list</option>
