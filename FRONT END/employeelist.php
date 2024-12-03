@@ -14,7 +14,6 @@
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
             <option value="employeeList.php">Employee list</option>
-            
             <option value="salary.php">Salary</option>
             <option value="deduction.php">Deduction</option>
         </select>
@@ -44,9 +43,11 @@
                     <th>NAME</th>
                     <th>POSITION</th>
                     <th>TEAM</th>
+                    <th>RATE</th>
                     <th>CONTACT NUMBER</th>
                     <th>EMAIL</th>
                     <th>DATE HIRED</th>
+                    <th>ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +57,7 @@
                     require_once("../BACK END/includes/db.inc.php");
     
                     // SQL query to fetch employee data
-                    $query = "SELECT firstName, lastName, employeeType AS position, team, contactNumber, email, dateHired FROM employee";
+                    $query = "SELECT employeeID, firstName, lastName, employeeType AS position, team, rate, contactNumber, email, dateHired FROM employee";
     
                     // Prepare and execute the query
                     $stmt = $pdo->query($query);
@@ -67,9 +68,15 @@
                         echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['position']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['team']) . "</td>";
+                        echo "<td>". htmlspecialchars($row["rate"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row['contactNumber']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['dateHired']) . "</td>";
+                        echo "<td class='tools'>
+                                <a href='editEmployee.php?employeeID=" . htmlspecialchars($row['employeeID']) . "'>
+                                    <button class='edit'>Edit</button>
+                                </a>
+                              </td>";
                         echo "</tr>";
                     }
     

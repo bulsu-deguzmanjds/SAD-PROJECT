@@ -156,7 +156,7 @@
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
         <h2>DESIGN-BUILDERS</h2>
-        <button>DASHBOARD</button>
+        <a href="dashboardPage.html"><button class="add-btn"> DASHBOARD</button></a>
         <select id="employee" onchange="navigateToPage()">
             <option selected disabled>EMPLOYEE</option>
             <option value="employeeList.php">Employee list</option>
@@ -166,7 +166,7 @@
         <a href="attendance.php"><button>ATTENDANCE</button></a>
         <a href="task.html"><button>TASK</button></a>
         <a href="payroll.php"><button>PAYROLL</button></a>
-        <button>LOGOUT</button>
+        <a href="login.html"><button>LOGOUT</button></a> 
     </div>
     
     <script>
@@ -203,10 +203,11 @@
     
                     // Query to fetch salary data along with employee names
                     $query = "SELECT gs.salaryID, e.firstName, e.lastName, gs.daysPresent, 
-                                 gs.rate, gs.overtimeHours, gs.overtimePay, 
-                                 gs.salary
-                              FROM grossSalary gs
-                              JOIN employee e ON gs.employeeID = e.employeeID";
+                    e.rate, gs.overtimeHours, gs.overtimePay, 
+                    gs.salary
+                    FROM grossSalary gs
+                    JOIN employee e ON gs.employeeID = e.employeeID";
+
     
                     // Prepare and execute the query
                     $stmt = $pdo->query($query);

@@ -147,7 +147,7 @@
             <a href="attendance.php"><button>ATTENDANCE</button></a>
             <a href="task.html"><button>TASK</button></a>
             <a href="payroll.php"><button>PAYROLL</button></a>
-           <a href="login.html"><button>LOGOUT</button></a> 
+            <a href="login.html"><button>LOGOUT</button></a> 
         </div>
         <script>
             function navigateToPage() {

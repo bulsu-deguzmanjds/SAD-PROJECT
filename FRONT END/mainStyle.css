@@ -158,3 +158,20 @@ table tr:nth-child(even) {
 .add-btn:hover {
     background-color: #000000;
 }
+
+.tools button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.tools .edit {
+    background-color: #076900;
+}
+
+.tools .edit:hover {
+    background-color:#076900;
+}

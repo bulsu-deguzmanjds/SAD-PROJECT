@@ -2,6 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
+    $employeeID = $_POST['employeeID']; // Ensure employeeID is passed in the form
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
@@ -16,27 +17,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Include database connection
         require_once("db.inc.php");
 
-        // SQL query to insert employee data
-        $query = "INSERT INTO employee (firstName, lastName, email, rate, contactNumber, team, employeeType, dateHired, employeeCode) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        // SQL query to update employee data
+        $query = "UPDATE employee 
+                  SET firstName = ?, lastName = ?, email = ?, contactNumber = ?, rate = ?, 
+                      team = ?, employeeType = ?, dateHired = ?, employeeCode = ?
+                  WHERE employeeID = ?";
 
         // Prepare and execute the statement
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$firstName, $lastName, $email, $rate, $contactNumber, $team, $employeeType, $dateHired, $employeeCode]);
+        $stmt->execute([$firstName, $lastName, $email, $contactNumber, $rate, $team, $employeeType, $dateHired, $employeeCode, $employeeID]);
 
         // Clean up and redirect
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../../FRONT END/employeeList.php"); // Redirect to homepage or confirmation page
+        header("Location: ../../FRONT END/employeeList.php"); // Redirect to employee list or confirmation page
         exit();
     } catch (PDOException $e) {
         // Handle errors
-        die("Error adding employee: " . $e->getMessage());
+        die("Error updating employee: " . $e->getMessage());
     }
 } else {
     // Redirect if accessed without form submission
-    header("Location: ../addEmployeeForm.html"); 
+    header("Location: ../editEmployeeForm.html"); // Redirect to the edit form page
     exit();
 }
 ?>
