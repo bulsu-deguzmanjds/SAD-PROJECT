@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validate file extension
         if (in_array($extension, ['xls', 'xlsx', 'XLS', 'XLSX'])) {
             // Define paths for the converted CSV file
-            $csvFileName = 'attendanceLog.csv'; // Define a consistent output file name
+            $csvFileName = 'Logs.csv'; // Define a consistent output file name
             $csvFilePath = __DIR__ . '/' . $csvFileName;
 
             // Include conversion script
@@ -25,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             processCSVData($csvFilePath);
 
             echo "File uploaded, converted, and data inserted successfully!";
+
+            require_once('calculateSalary.php');
+
+            processGrossSalary();
 
             header("Location: ../FRONT END/attendance.php");
         } else {

@@ -185,27 +185,25 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
-<form action="" method="post">
-    <label for="employee">Select Employee:</label>
-    <select name="employeeID" id="employee">
-        <option value="" disabled selected>-- Select an Employee --</option>
-        <?php foreach ($employees as $employee): ?>
-            <option value="<?= htmlspecialchars($employee['employeeID']) ?>">
-                <?= htmlspecialchars($employee['firstName'] . ' ' . $employee['lastName']) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</form>
 <BR></BR>
         <form action="../BACK END/includes/addDeductions.inc.php" method="post">
+            <label for="employee">Select Employee:</label>
+            <select name="employeeID" id="employee">
+                <option value="" disabled selected>-- Select an Employee --</option>
+                <?php foreach ($employees as $employee): ?>
+                    <option value="<?= htmlspecialchars($employee['employeeID']) ?>">
+                        <?= htmlspecialchars($employee['firstName'] . ' ' . $employee['lastName']) ?>
+                    </option>
+                <?php endforeach; ?>    
+            </select>
             <div class="form-content">
                 <div class="form-group">
                     <label for="cashAdvance">Cash Advance</label>
-                    <input type="text">
+                    <input type="text" name="cashAdvance">
                 </div>
                 <div class="form-group">
                     <label for="adjustment">Adjustment</label>
-                    <input type="text">
+                    <input type="text" name="adjustment">
                 </div>  
             </div>
             <div class="save-button">

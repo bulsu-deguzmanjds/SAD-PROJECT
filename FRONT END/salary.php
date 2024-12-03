@@ -192,7 +192,6 @@
                     <th>OVERTIME HOURS</th>
                     <th>OVERTIME PAY</th>
                     <th>GROSS SALARY</th>
-                    <th>ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
@@ -208,7 +207,6 @@
                     FROM grossSalary gs
                     JOIN employee e ON gs.employeeID = e.employeeID";
 
-    
                     // Prepare and execute the query
                     $stmt = $pdo->query($query);
     
@@ -222,10 +220,6 @@
                         echo "<td>" . htmlspecialchars($row['overtimeHours']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['overtimePay']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['salary']) . "</td>";
-                        echo "<td class='tools'>
-                                <button class='edit'>Edit</button>
-                                <button class='delete'>Delete</button>
-                              </td>";
                         echo "</tr>";
                     }
     

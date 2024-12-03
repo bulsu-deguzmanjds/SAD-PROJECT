@@ -3,14 +3,21 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $employeeID = $_POST["employeeID"];
-    $advance = $_POST["advance"];
+    $advance = $_POST["cashAdvance"];
     $adjustment = $_POST["adjustment"];
     $totalDeduction = $advance + $adjustment;
 
     try{
         require_once("db.inc.php");
 
-        $query = "INSERT INTO deductions (employeeID, cashAdvance, adjustment, totalDeduction) VALUES (?, ?, ?, ?);";  
+        $query = "
+            INSERT INTO deductions (employeeID, cashAdvance, adjustment, totalDeduction) 
+            VALUES (?, ?, ?, ?) 
+            ON DUPLICATE KEY UPDATE
+                cashAdvance = VALUES(cashAdvance),
+                adjustment = VALUES(adjustment),
+                totalDeduction = VALUES(totalDeduction);
+        ";
 
         $stmt = $pdo->prepare($query);
 
@@ -19,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../index.php");
+        header("Location: ../../FRONT END/deduction.php");
 
         die("");
     }

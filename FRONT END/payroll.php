@@ -172,7 +172,6 @@
             <th>GROSS</th>
             <th>DEDUCTION</th>
             <th>NET PAY</th>
-            <th>ACTION</th>
         </tr>
     </thead>
     <tbody>
@@ -199,7 +198,6 @@
             echo "<td>" . htmlspecialchars($row['gross']) . "</td>";
             echo "<td>" . htmlspecialchars($row['deduction']) . "</td>";
             echo "<td>" . htmlspecialchars($row['netPay']) . "</td>";
-            echo "<td><a href='payslip.php?salaryID=" . urlencode($row['salaryID']) . "' class='payslip-btn'>View Payslip</a></td>";
             echo "</tr>";
         }
 

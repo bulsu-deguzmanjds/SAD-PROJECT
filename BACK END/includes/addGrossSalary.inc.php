@@ -17,18 +17,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "
             INSERT INTO grossSalary (
                 employeeID, 
-                daysPresent, 
-                rate, 
+                daysPresent,
                 overtimeHours, 
                 overtimePay, 
                 salary            
                 ) 
-            VALUES (?, ?, ?, ?, ?, ?);
+            VALUES (?, ?, ?, ?, ?);
         ";
 
         // Prepare and execute the statement
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$employeeID, $daysPresent, $rate, $overtimeHours, $overtimePay, $salary]);
+        $stmt->execute([$employeeID, $daysPresent, $overtimeHours, $overtimePay, $salary]);
 
         // Close the connection
         $pdo = null;

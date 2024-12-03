@@ -9,7 +9,7 @@ function convertExcelSheetToCSV($inputFile, $outputFile) {
     $spreadsheet = IOFactory::load($inputFile);
 
 
-        $sheet = $spreadsheet->getSheet(2);
+        $sheet = $spreadsheet->getSheet(0);
 
     // Open the CSV file for writing
     $csvFile = fopen($outputFile, 'w');
@@ -22,7 +22,7 @@ function convertExcelSheetToCSV($inputFile, $outputFile) {
         foreach ($cellIterator as $cell) {
             $rowData[] = $cell->getFormattedValue();
         }
-
+        
         fputcsv($csvFile, $rowData);
     }
 

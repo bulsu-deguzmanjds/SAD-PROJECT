@@ -12,6 +12,7 @@ function processCSVData($csvFilePath){
     $employeeName = ""; // Variable to store employee name
     
     try {
+        $pdo->exec("TRUNCATE TABLE attendance");
         // SQL query to insert attendance data
         $query = "
             INSERT INTO attendance (employeeID, clockInTime, clockOutTime) 
@@ -58,18 +59,18 @@ function processCSVData($csvFilePath){
                         }
                         
                         // Split the time string by space to get individual times
-                        $times = explode("\n", $timeString);
-                        
+                        $times = extractTimes($timeString);
+
                         // Check if there are at least two times (clock-in and clock-out)
                         $numTimes = count($times);
                         if ($numTimes >= 2) {
                             $clockInTime = $times[0];             // First time (clock-in)
-                            $clockOutTime = $times[$numTimes - 2]; // Last time (clock-out)
+                            $clockOutTime = $times[$numTimes - 1]; // Last time (clock-out)
                 
                             // Calculate the date corresponding to the column
                             $dayOfMonth = $colIndex + 1; // Column 2 corresponds to December 1
                             $date = "2024-12-" . str_pad($dayOfMonth, 2, "0", STR_PAD_LEFT); // Format as YYYY-MM-DD
-                
+                            
                             // Combine date with times to create full datetime strings
                             $clockInDateTime = $date . " " . $clockInTime . ":00";  // Append seconds as ":00"
                             $clockOutDateTime = $date . " " . $clockOutTime . ":00";
@@ -83,9 +84,6 @@ function processCSVData($csvFilePath){
                     }
                 }
                 
-                
-                
-    
                 $skipRow = false;
                 $isFirstRow = true;
             }
@@ -102,6 +100,42 @@ function processCSVData($csvFilePath){
     
     // Close the CSV file
     fclose($csvFile);
+}
+function extractTimes($timeString) {
+    $times = [];
+    $current = '';
+    $isTime = false;
+
+    // Loop through each character in the string
+    for ($i = 0; $i < strlen($timeString); $i++) {
+        $char = $timeString[$i];
+
+        // Check if the character is part of a time format
+        if (ctype_digit($char) || $char === ':') {
+            $current .= $char;
+
+            // If a colon is detected, mark as potential time
+            if ($char === ':') {
+                $isTime = true;
+            }
+        } else {
+            // If a non-time character is encountered and we have a valid time
+            if ($isTime && preg_match('/^\d{1,2}:\d{2}$/', $current)) {
+                $times[] = $current; 
+            }
+
+            // Reset for the next potential time
+            $current = '';
+            $isTime = false;
+        }
+    }
+
+    // Add the last potential time if valid
+    if ($isTime && preg_match('/^\d{1,2}:\d{2}$/', $current)) {
+        $times[] = $current;
+    }
+
+    return $times;
 }
 
 ?>
