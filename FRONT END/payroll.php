@@ -161,61 +161,56 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="action-buttons">
-                    <a href="payrollPrint.html"><button class="payslip-btn">PRINT PAYSLIP</button></a>
+                    <a href="payrollprint.html"><button class="payslip-btn">PRINT PAYSLIP</button></a>
                 </div>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th>EMPLOYEE ID</th>
-                        <th>EMPLOYEE NAME</th>
-                        <th>GROSS</th>
-                        <th>DEDUCTION</th>
-                        <th>NET PAY</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                try {
-                    // Include database connection
-                    require_once("../BACK END/includes/db.inc.php");
+    <thead>
+        <tr>
+            <th>EMPLOYEE ID</th>
+            <th>EMPLOYEE NAME</th>
+            <th>GROSS</th>
+            <th>DEDUCTION</th>
+            <th>NET PAY</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+    try {
+        require_once("../BACK END/includes/db.inc.php");
 
-                    // Query to fetch gross salary data with deductions
-                    $query = "SELECT    gs.salaryID, 
-                                        e.firstName, 
-                                        e.lastName, 
-                                        gs.salary AS gross, 
-                                        COALESCE(d.totalDeduction, 0) AS deduction, 
-                                        (gs.salary - COALESCE(d.totalDeduction, 0)) AS netPay
-                                FROM grossSalary gs
-                                JOIN employee e ON gs.employeeID = e.employeeID
-                                LEFT JOIN deductions d ON d.employeeID = e.employeeID";
+        $query = "SELECT    gs.salaryID, 
+                            e.firstName, 
+                            e.lastName, 
+                            gs.salary AS gross, 
+                            COALESCE(d.totalDeduction, 0) AS deduction, 
+                            (gs.salary - COALESCE(d.totalDeduction, 0)) AS netPay
+                    FROM grossSalary gs
+                    JOIN employee e ON gs.employeeID = e.employeeID
+                    LEFT JOIN deductions d ON d.employeeID = e.employeeID";
 
-                    // Prepare and execute the query
-                    $stmt = $pdo->query($query);
+        $stmt = $pdo->query($query);
 
-                    // Loop through the results and display each employee's gross salary data
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['salaryID']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['gross']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['deduction']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['netPay']) . "</td>";
-                        echo "</tr>";
-                    }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['salaryID']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['firstName']) . " " . htmlspecialchars($row['lastName']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['gross']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['deduction']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['netPay']) . "</td>";
+            echo "<td><a href='payslip.php?salaryID=" . urlencode($row['salaryID']) . "' class='payslip-btn'>View Payslip</a></td>";
+            echo "</tr>";
+        }
 
-                    // Clean up
-                    $pdo = null;
-                    $stmt = null;
-
-                } catch (PDOException $e) {
-                    die("Error fetching gross salary data: " . $e->getMessage());
-                }
-                ?>
-
-                </tbody>
-            </table>
+        $pdo = null;
+        $stmt = null;
+    } catch (PDOException $e) {
+        die("Error fetching gross salary data: " . $e->getMessage());
+    }
+    ?>
+    </tbody>
+</table>
         </div>
     </div>
 </body>
