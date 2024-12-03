@@ -161,7 +161,45 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="action-buttons">
-                    <a href="payrollprint.html"><button class="payslip-btn">PRINT PAYSLIP</button></a>
+                <?php
+                    try {
+                        require_once("../BACK END/includes/db.inc.php");
+
+                        // Fetch employee data
+                        $query = "SELECT employeeID, firstName, lastName FROM employee";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute();
+                        $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        $attendanceRecords = [];
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['employeeID'])) {
+                            $selectedEmployeeID = $_POST['employeeID'];
+
+                            // Fetch attendance records for the selected employee
+                            $attendanceQuery = "SELECT a.attendanceID, a.clockInTime, a.clockOutTime, TIMESTAMPDIFF(HOUR, a.clockInTime, a.clockOutTime) AS hoursWorked
+                                                FROM attendance a
+                                                WHERE a.employeeID = ?";
+                            $stmt = $pdo->prepare($attendanceQuery);
+                            $stmt->execute([$selectedEmployeeID]);
+                            $attendanceRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        }
+                    } catch (PDOException $e) {
+                        die("Database connection failed: " . $e->getMessage());
+                    }
+                    ?>
+                    <form action="payrollprint.php" method="POST">
+                        <label for="employee">Select Employee:</label>
+                        <select name="employeeID" id="employee">
+                            <option value="" disabled selected>-- Select an Employee --</option>
+                            <?php foreach ($employees as $employee): ?>
+                                <option value="<?= htmlspecialchars($employee['employeeID']) ?>">
+                                    <?= htmlspecialchars($employee['firstName'] . ' ' . $employee['lastName']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button class="payslip-btn">PRINT PAYSLIP</button>
+                    </form>
+                    
                 </div>
             </div>
             <table>

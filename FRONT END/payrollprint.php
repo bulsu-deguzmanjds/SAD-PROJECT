@@ -177,40 +177,120 @@
         }
     </script>
 
-    <div class="content">
-        <h3>EMPLOYEE ID:</h3>
-        <h3>EMPLOYEE NAME:</h3>
+    <?php
+    // Assuming you have a database connection file included
+    require_once('../BACK END/includes/db.inc.php');
 
-        <table class="payroll-table">
-            <thead>
-                <tr>
-                    <th>EARNINGS</th>
-                    <th>AMOUNT</th>
-                    <th>DEDUCTIONS</th>
-                    <th>AMOUNT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sample Earning</td>
-                    <td>₱4.00</td>
-                    <td>Sample Deduction</td>
-                    <td>₱0.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>TOTAL EARNINGS:</td>
-                    <td>₱0.00</td>
-                    <td>TOTAL DEDUCTIONS:</td>
-                    <td>₱0.00</td>
-                </tr>
-                <tr>
-                    <td colspan="3">NET PAY:</td>
-                    <td>₱0.00</td>
-                </tr>
-            </tfoot>
-        </table>
+    // Get the employeeID (you can get this via GET or POST, or session)
+    $employeeID = $_POST['employeeID']; // For example
+
+    // Query to fetch earnings (salary and overtime) and deductions (cash advance and adjustment)
+    $query = "
+        SELECT e.firstName, e.lastName, 
+            SUM(grossSalary.salary) AS totalSalary, 
+            SUM(grossSalary.overtimePay) AS totalOvertimePay, 
+            SUM(deductions.cashAdvance) AS totalCashAdvance,
+            SUM(deductions.adjustment) AS totalAdjustment
+        FROM employee e
+        LEFT JOIN grossSalary ON e.employeeID = grossSalary.employeeID
+        LEFT JOIN deductions ON e.employeeID = deductions.employeeID
+        WHERE e.employeeID = ?
+        GROUP BY e.employeeID
+    ";
+
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$employeeID]);
+
+    // Fetch the employee data
+    $employeeData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Get individual earnings (salary and overtime) and deductions (cash advance and adjustment)
+    $earningsQuery = "
+        SELECT salary, overtimePay FROM grossSalary WHERE employeeID = ?
+    ";
+    $earningsStmt = $pdo->prepare($earningsQuery);
+    $earningsStmt->execute([$employeeID]);
+    $earnings = $earningsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $deductionsQuery = "
+        SELECT cashAdvance, adjustment FROM deductions WHERE employeeID = ?
+    ";
+    $deductionsStmt = $pdo->prepare($deductionsQuery);
+    $deductionsStmt->execute([$employeeID]);
+    $deductions = $deductionsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calculate the net pay
+    $totalSalary = $employeeData['totalSalary'];
+    $totalOvertimePay = $employeeData['totalOvertimePay'];
+    $totalCashAdvance = $employeeData['totalCashAdvance'];
+    $totalAdjustment = $employeeData['totalAdjustment'];
+    $totalEarnings = $totalSalary + $totalOvertimePay;
+    $totalDeductions = $totalCashAdvance + $totalAdjustment;
+    $netPay = $totalEarnings - $totalDeductions;
+    ?>
+
+
+
+<div class="content">
+    <h3>EMPLOYEE ID: <?php echo $employeeID; ?></h3>
+    <h3>EMPLOYEE NAME: <?php echo $employeeData['firstName'] . ' ' . $employeeData['lastName']; ?></h3>
+
+    <table class="payroll-table">
+        <thead>
+            <tr>
+                <th>EARNINGS</th>
+                <th>AMOUNT</th>
+                <th>DEDUCTIONS</th>
+                <th>AMOUNT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Display Earnings (Salary and Overtime Pay)
+            echo "<tr>
+                    <td>Salary</td>
+                    <td>₱" . number_format($totalSalary, 2) . "</td>
+                    <td></td>
+                    <td></td>
+                  </tr>";
+            
+            echo "<tr>
+                    <td>Overtime Pay</td>
+                    <td>₱" . number_format($totalOvertimePay, 2) . "</td>
+                    <td></td>
+                    <td></td>
+                  </tr>";
+
+            // Display Deductions (Cash Advance and Adjustment)
+            echo "<tr>
+                    <td></td>
+                    <td></td>
+                    <td>Cash Advance</td>
+                    <td>₱" . number_format($totalCashAdvance, 2) . "</td>
+                  </tr>";
+            
+            echo "<tr>
+                    <td></td>
+                    <td></td>
+                    <td>Adjustment</td>
+                    <td>₱" . number_format($totalAdjustment, 2) . "</td>
+                  </tr>";
+            ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>TOTAL EARNINGS:</td>
+                <td>₱<?php echo number_format($totalEarnings, 2); ?></td>
+                <td>TOTAL DEDUCTIONS:</td>
+                <td>₱<?php echo number_format($totalDeductions, 2); ?></td>
+            </tr>
+            <tr>
+                <td colspan="3">NET PAY:</td>
+                <td>₱<?php echo number_format($netPay, 2); ?></td>
+            </tr>
+        </tfoot>
+    </table>
 
         <div class="signatures">
             <div class="signature">
