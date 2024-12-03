@@ -97,8 +97,20 @@
         table tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
+        .upload {
+            padding-top: 10px;
+        }
+ 
+        #submit {
+            background-color: #2cbe21;
+            padding: 10px 20px;
+            border-radius:15%;
+            border: none;
+            color: white;
+        }
     </style>
-</head>
+</head> 
 <body>
     <div class="sidebar">
         <h1>VILLAFUERTE</h1>
@@ -165,7 +177,12 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit">Submit</button>   
+            <button id="submit" type="submit">Submit</button>   
+        </form>
+
+        <form class="upload" action="../BACK END/processUpload.php" method="post" enctype="multipart/form-data">
+            <input type="file" id="myFile" name="file" accept=".xls, .xlsx" required>
+            <input id="submit" type="submit" value="Upload">
         </form>
 
         <div class="header-title">ATTENDANCE</div>
